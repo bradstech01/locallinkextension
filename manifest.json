@@ -1,0 +1,23 @@
+{
+"update_url":"http://fake.url",
+  "name":            "FileOpener",
+  "version":         "1.0",
+  "description":     "Allows opening file:// links on pages loaded by http(s)://",
+  "permissions":     ["tabs"],
+  "background": {
+    "scripts": ["lib/jquery-3.3.1.min.js","background_page/background.js"]
+  },
+  "options_page":    "options_page/options.html",
+  "content_scripts": [{
+    "run_at":     "document_start",
+    "all_frames": true,
+    "matches":    ["http://*/*", "https://*/*"],
+    "js":         ["lib/jquery-3.3.1.min.js", "content_script/locallinks_extension.js"]
+  }],
+  "applications": {
+    "gecko": {
+      "id": "mr@brads.tech"
+    }
+  },
+  "manifest_version": 2
+}
